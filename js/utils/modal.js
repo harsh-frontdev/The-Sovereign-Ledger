@@ -4,7 +4,7 @@
  * @param {string} openBtnId - The ID of the button that opens the modal.
  * @param {string} closeBtnId - The ID of the button that closes the modal.
  */
-function initModal(modalId, openBtnId, closeBtnId) {
+export default function initModal(modalId, openBtnId, closeBtnId) {
   const modal = document.getElementById(modalId);
   const btnOpen = document.getElementById(openBtnId);
   const btnClose = document.getElementById(closeBtnId);

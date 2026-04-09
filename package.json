@@ -2,6 +2,7 @@
   "name": "personal-finance-app",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm run watch:css\" \"live-server\"",
