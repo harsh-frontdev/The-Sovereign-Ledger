@@ -73,8 +73,8 @@
           </div>
           <div class="flex items-center gap-4">
             <div class="text-right">
-              <div class="text-sm font-bold text-main">Julian Sterling</div>
-              <div class="text-[0.65rem] font-bold text-hero-label bg-hero px-2 py-0.5 rounded-full mt-1 uppercase tracking-wide inline-block">Premium Member</div>
+              <div class="text-md font-bold text-main">Julian Sterling</div>
+              <div class="text-[0.65rem] uppercase">Premium Member</div>
             </div>
             <div class="avatar">
               <!-- Placeholder for user avatar -->
@@ -366,31 +366,10 @@
     </div>
   </div>
 
+  <script src="js/util.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const modal = document.getElementById('addTransactionModal');
-      const btnOpen = document.getElementById('btnOpenAddTransaction');
-      const btnClose = document.getElementById('btnCloseAddTransaction');
-
-      if(btnOpen && btnClose && modal) {
-        btnOpen.addEventListener('click', () => {
-          modal.classList.remove('hidden');
-          modal.classList.add('flex');
-        });
-
-        btnClose.addEventListener('click', () => {
-          modal.classList.add('hidden');
-          modal.classList.remove('flex');
-        });
-
-        // Close on overlay click
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-          }
-        });
-      }
+      initModal('addTransactionModal', 'btnOpenAddTransaction', 'btnCloseAddTransaction');
     });
   </script>
 </body>
