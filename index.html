@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sovereign Ledger - Dashboard</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h1>The Sovereign<br>Ledger</h1>
+        <p>Private Wealth Management</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active">
+          <span class="material-symbols-rounded">grid_view</span>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item">
+          <span class="material-symbols-rounded">receipt_long</span>
+          Transactions
+        </a>
+        <a href="#" class="nav-item">
+          <span class="material-symbols-rounded">account_balance_wallet</span>
+          Budgets
+        </a>
+        <a href="#" class="nav-item">
+          <span class="material-symbols-rounded">account_balance</span>
+          Accounts
+        </a>
+        <a href="#" class="nav-item">
+          <span class="material-symbols-rounded">bar_chart</span>
+          Reports
+        </a>
+        <a href="#" class="nav-item">
+          <span class="material-symbols-rounded">track_changes</span>
+          Goals
+        </a>
+        <a href="#" class="nav-item">
+          <span class="material-symbols-rounded">settings</span>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="btn-add">
+          <span class="material-symbols-rounded">add_circle</span>
+          Add Transaction
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="search-bar">
+          <span class="material-symbols-rounded">search</span>
+          <input type="text" placeholder="Search wealth reports...">
+        </div>
+        
+        <div class="header-actions">
+          <div class="header-icons">
+            <span class="material-symbols-rounded">notifications</span>
+            <span class="material-symbols-rounded">help</span>
+          </div>
+          <div class="user-profile">
+            <div class="user-info">
+              <div class="user-name">Julian Sterling</div>
+              <div class="user-badge">Premium Member</div>
+            </div>
+            <div class="avatar">
+              <!-- Placeholder for user avatar -->
+              <img src="https://i.pravatar.cc/150?img=11" alt="Julian Sterling">
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Grid -->
+      <div class="dashboard-container">
+        <div class="dashboard-grid">
+          
+          <!-- Left Main Column -->
+          <div class="main-column">
+            
+            <!-- Hero Card -->
+            <div class="card hero-card">
+              <div class="hero-content">
+                <div class="net-worth-row">
+                  <div>
+                    <div class="hero-label">Total Net Worth</div>
+                    <div class="net-worth-amount">₹1,248,592.00</div>
+                  </div>
+                  <div class="trend-icon">
+                    <span class="material-symbols-rounded text-white">trending_up</span>
+                  </div>
+                </div>
+                
+                <div class="hero-stats">
+                  <div class="stat-item">
+                    <div class="hero-label">Monthly Income</div>
+                    <div class="stat-amount text-success">+&nbsp;₹24,300</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="hero-label">Monthly Expenses</div>
+                    <div class="stat-amount text-danger">-&nbsp;₹12,840</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Transactions Card -->
+            <div class="card">
+              <div class="card-title-row">
+                <div>
+                  <h2 class="card-title">Recent Transactions</h2>
+                  <p class="card-subtitle">Managed movements across all private accounts.</p>
+                </div>
+                <a href="#" class="link-action">
+                  Full Ledger <span class="material-symbols-rounded" style="font-size: 1.1rem">arrow_forward</span>
+                </a>
+              </div>
+
+              <div class="transaction-list">
+                <!-- Transaction Item 1 -->
+                <div class="tx-item">
+                  <div class="tx-icon">
+                    <span class="material-symbols-rounded">restaurant</span>
+                  </div>
+                  <div class="tx-details">
+                    <div class="tx-title">The Gild Restaurant</div>
+                    <div class="tx-meta">Private Dining &middot; Oct 24</div>
+                  </div>
+                  <div class="tx-amount">
+                    <div class="tx-value text-danger">-₹1,420.00</div>
+                    <div class="tx-type">AMEX BLACK</div>
+                  </div>
+                </div>
+
+                <!-- Transaction Item 2 -->
+                <div class="tx-item">
+                  <div class="tx-icon">
+                    <span class="material-symbols-rounded">flight</span>
+                  </div>
+                  <div class="tx-details">
+                    <div class="tx-title">NetJets Aviation</div>
+                    <div class="tx-meta">Charter Services &middot; Oct 22</div>
+                  </div>
+                  <div class="tx-amount">
+                    <div class="tx-value text-danger">-₹15,800.00</div>
+                    <div class="tx-type">TRANSFER</div>
+                  </div>
+                </div>
+
+                <!-- Transaction Item 3 -->
+                <div class="tx-item">
+                  <div class="tx-icon">
+                    <span class="material-symbols-rounded">account_balance</span>
+                  </div>
+                  <div class="tx-details">
+                    <div class="tx-title">Dividend Payout</div>
+                    <div class="tx-meta">Equity Portfolio &middot; Oct 20</div>
+                  </div>
+                  <div class="tx-amount">
+                    <div class="tx-value text-success">+₹8,450.00</div>
+                    <div class="tx-type">INVESTMENT</div>
+                  </div>
+                </div>
+
+                <!-- Transaction Item 4 -->
+                <div class="tx-item">
+                  <div class="tx-icon">
+                    <span class="material-symbols-rounded">home_work</span>
+                  </div>
+                  <div class="tx-details">
+                    <div class="tx-title">Heritage Estate Care</div>
+                    <div class="tx-meta">Maintenance &middot; Oct 18</div>
+                  </div>
+                  <div class="tx-amount">
+                    <div class="tx-value text-danger">-₹2,100.00</div>
+                    <div class="tx-type">CHECKING</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Side Column -->
+          <div class="side-column">
+            
+            <!-- Budgets Card -->
+            <div class="card">
+              <div class="card-title-row" style="margin-bottom: 2rem;">
+                <h2 class="card-title">Top Budgets</h2>
+                <span class="text-xs fw-600" style="letter-spacing: 0.05em; color: var(--text-main);">ACTIVE</span>
+              </div>
+
+              <div class="budget-list">
+                <div class="budget-item">
+                  <div class="budget-info">
+                    <span class="text-muted">Real Estate Maintenance</span>
+                    <span>72%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill fill-primary" style="width: 72%;"></div>
+                  </div>
+                </div>
+
+                <div class="budget-item">
+                  <div class="budget-info">
+                    <span class="text-muted">Luxury Lifestyle</span>
+                    <span>45%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill fill-blue" style="width: 45%;"></div>
+                  </div>
+                </div>
+
+                <div class="budget-item">
+                  <div class="budget-info">
+                    <span class="text-muted">Global Travel</span>
+                    <span>89%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill fill-red" style="width: 89%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Allocation Card -->
+            <div class="card allocation-card">
+              <h2 class="card-title" style="text-align: center;">Allocation by<br>Category</h2>
+              
+              <div class="donut-chart-container">
+                <div class="donut-chart">
+                  <div class="chart-center-text">
+                    <div class="chart-label">TOTAL SPENT</div>
+                    <div class="chart-value">₹32.4k</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="legend-list">
+                <div class="legend-item">
+                  <div class="legend-label"><span class="dot primary"></span> Investments</div>
+                  <span>45%</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-label"><span class="dot blue"></span> Travel</div>
+                  <span>25%</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-label"><span class="dot dark"></span> Maintenance</div>
+                  <span>30%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Advisor Tip -->
+            <div class="card tip-card">
+              <div class="tip-icon">
+                <span class="material-symbols-rounded">lightbulb</span>
+              </div>
+              <div class="tip-content">
+                <h4>Advisor Tip</h4>
+                <p>Consider rebalancing your equity portfolio to capture higher yields in emerging markets.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+</body>
+</html>
