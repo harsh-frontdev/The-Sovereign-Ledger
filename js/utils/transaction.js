@@ -8,10 +8,17 @@ export default function updateTransactions(data) {
     transactionDataEl.innerHTML = "";
     if(data.length > 0){
         data.forEach((element) => {
+            const date = new Date(element.date);
+            const formattedDate = date.toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+            });
+
             transactionDataEl.innerHTML += `
                 <div class="grid grid-cols-[1.5fr_2fr_1fr_1fr_1fr] gap-4 items-center px-6 py-4 border-b border-border hover:bg-slate-50 transition-colors">
                 <div>
-                    <span class="font-medium text-sm text-main block">${element.date}</span>
+                    <span class="font-medium text-sm text-main block">${formattedDate}</span>
                     <span class="text-xs text-muted mt-1 block">${element.time}</span>
                 </div>
                 <div class="flex items-center gap-4">

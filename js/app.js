@@ -19,6 +19,8 @@ function addTransaction(e){
     existingTrans = JSON.parse(localStorage.getItem('myTransactions')) || [];
     const formData = new FormData(addTrasactionForm);
     existingTrans = [new Object({
+        id : crypto.randomUUID(),
+        timestamp : Date.now(),
         date : formData.get('date-time'),
         time : new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
         description: formData.get('desc'),
@@ -45,9 +47,16 @@ function loadDetailView(){
     const detailAmountEl = document.querySelector('#detail-amount');
 
     existingTrans = JSON.parse(localStorage.getItem('myTransactions')) || [];
+
+    const date = new Date(existingTrans[0].date);
+    const formattedDate = date.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    });
     
     detailDescEl.textContent = existingTrans[0].description;
-    detailDateEl.textContent = existingTrans[0].date;
+    detailDateEl.textContent = formattedDate;
     detailTimeEl.textContent = existingTrans[0].time;
     detailCategoryEl.textContent = existingTrans[0].category;
     detailAccountEl.textContent = existingTrans[0].account;
