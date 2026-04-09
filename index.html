@@ -49,7 +49,7 @@
       </nav>
 
       <div class="mt-auto pt-4 border-t border-border">
-        <button class="w-full flex items-center justify-center gap-2 bg-primary text-white border-none rounded-lg py-3 text-[0.9rem] font-semibold cursor-pointer transition-colors hover:bg-primary-hover">
+        <button id="btnOpenAddTransaction" class="w-full flex items-center justify-center gap-2 bg-primary text-white border-none rounded-lg py-3 text-[0.9rem] font-semibold cursor-pointer transition-colors hover:bg-primary-hover">
           <span class="material-symbols-rounded">add_circle</span>
           Add Transaction
         </button>
@@ -273,7 +273,7 @@
   </div>
 
   <!-- Add Transaction Modal -->
-  <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex justify-center items-center z-[1000]">
+  <div id="addTransactionModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm justify-center items-center z-[1000] hidden">
     <div class="flex w-[900px] h-[560px] bg-white rounded-xl overflow-hidden shadow-2xl">
       
       <!-- Left Section -->
@@ -355,7 +355,7 @@
               Add Receipt
             </button>
             <div class="flex items-center gap-6">
-              <button type="button" class="bg-transparent border-none text-[0.9rem] font-semibold text-main cursor-pointer hover:underline">Cancel</button>
+              <button type="button" id="btnCloseAddTransaction" class="bg-transparent border-none text-[0.9rem] font-semibold text-main cursor-pointer hover:underline">Cancel</button>
               <button type="submit" class="bg-primary text-white border-none rounded-md px-6 py-3 text-[0.85rem] font-semibold cursor-pointer transition-colors hover:bg-primary-hover">Add Transaction</button>
             </div>
           </div>
@@ -366,5 +366,32 @@
     </div>
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('addTransactionModal');
+      const btnOpen = document.getElementById('btnOpenAddTransaction');
+      const btnClose = document.getElementById('btnCloseAddTransaction');
+
+      if(btnOpen && btnClose && modal) {
+        btnOpen.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        });
+
+        btnClose.addEventListener('click', () => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        });
+
+        // Close on overlay click
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
