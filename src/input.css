@@ -1,27 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0');
+@import "tailwindcss";
+/* @tailwind utilities; */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-manrope: "Manrope", sans-serif;
+  --font-icon-font: "Material Symbols Rounded";
+  
+  /* ... keep your colors and shadows exactly as they are ... */
+  --color-body: #f8f9fc;
+  --color-sidebar: #ffffff;
+  --color-card: #ffffff;
+  --color-card-alt: #f0f3fa;
+  --color-hero: #06402b;
+  --color-tip: #094732;
+  --color-main: #1e293b;
+  --color-muted: #64748b;
+  --color-light: #94a3b8;
+  --color-hero-label: #a2c6b6;
+  --color-primary: #2B6954;
+  --color-primary-hover: #085237;
+  --color-accent: #22c55e;
+  --color-danger: #BA1A1A;
+  --color-border: #e2e8f0;
+  --background-image-hero-gradient: linear-gradient(135deg, #06402b 0%, #032b1c 100%);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+}
 
 @layer base {
   body {
     @apply font-inter bg-body text-main leading-relaxed flex h-screen overflow-hidden;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Manrope', sans-serif;
+    /* Use @apply to ensure it pulls from the @theme block */
+    @apply font-manrope;
   }
 }
 
-@layer components {
-  /* Material Symbols Adjustments */
-  .material-symbols-rounded {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    vertical-align: middle;
-  }
+/* Use @utility in v4 for custom class definitions */
+@utility material-symbols-rounded {
+  font-family: var(--font-icon-font);
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  vertical-align: middle;
+  
+  /* CRITICAL: Forces ligatures to work in v4 */
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
 
-  .icon-filled {
-    font-variation-settings: 'FILL' 1;
-  }
+@utility icon-filled {
+  font-variation-settings: 'FILL' 1;
 }

@@ -47,21 +47,21 @@ function loadDetailView(){
     const detailAmountEl = document.querySelector('#detail-amount');
 
     existingTrans = JSON.parse(localStorage.getItem('myTransactions')) || [];
-
-    const date = new Date(existingTrans[0].date);
-    const formattedDate = date.toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric'
-    });
-    
-    detailDescEl.textContent = existingTrans[0].description;
-    detailDateEl.textContent = formattedDate;
-    detailTimeEl.textContent = existingTrans[0].time;
-    detailCategoryEl.textContent = existingTrans[0].category;
-    detailAccountEl.textContent = existingTrans[0].account;
-    detailAmountEl.textContent = `₹${existingTrans[0].amount}`;
-
+    if(existingTrans.length > 0){
+        const date = new Date(existingTrans[0].date);
+        const formattedDate = date.toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        });
+        
+        detailDescEl.textContent = existingTrans[0].description;
+        detailDateEl.textContent = formattedDate;
+        detailTimeEl.textContent = existingTrans[0].time;
+        detailCategoryEl.textContent = existingTrans[0].category;
+        detailAccountEl.textContent = existingTrans[0].account;
+        detailAmountEl.textContent = `₹${existingTrans[0].amount}`;
+    }
 
 }
 loadDetailView();
