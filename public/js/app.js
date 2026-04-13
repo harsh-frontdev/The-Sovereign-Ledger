@@ -1,4 +1,3 @@
-import data from "./data.js";
 import updateTransactions from "./utils/transaction.js";
 import initModal from "./utils/modal.js";
 
@@ -18,52 +17,58 @@ function loadTransactions() {
 loadTransactions();
 
 const saveToDB = async (formData) => {
-    const response = await fetch("http://127.0.0.1:5000/api/transactions", {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-    });
+  const response = await fetch("http://127.0.0.1:5000/api/transactions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
 
-    const result = await response.json();
-    if (result.success) {
-        console.log("Entry Added");
+  const result = await response.json();
+  /* if (result.success) {
+    console.log("Entry Added");
+  } */
+};
+
+const getData = async () => {
+  try {
+    const response = await fetch("http://127.0.0.1:5000/api/transactions");
+    if (!response.ok) {
+      throw new Error(`Response Status: ${response.status}`);
     }
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 // Add Transactions
 const form = document.querySelector("#addTrasactionForm");
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    existingTrans = JSON.parse(localStorage.getItem("myTransactions")) || [];
-    const formData = new FormData(addTrasactionForm);
-    existingTrans = [
-    new Object({
-      id: crypto.randomUUID(),
-      timestamp: Date.now(),
-      date: formData.get("date-time"),
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-      description: formData.get("desc"),
-      category: formData.get("category"),
-      account: formData.get("account"),
-      amount: parseFloat(formData.get("price")),
-    }),
-    ...existingTrans,
-  ];
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  existingTrans = JSON.parse(localStorage.getItem("myTransactions")) || [];
+  const formData = new FormData(addTrasactionForm);
 
-  localStorage.setItem("myTransactions", JSON.stringify(existingTrans));
+  const newTrans = new Object({
+    date: formData.get("date-time"),
+    time: new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+    description: formData.get("desc"),
+    category: formData.get("category"),
+    account: formData.get("account"),
+    amount: parseFloat(formData.get("price")),
+  });
+  await saveToDB(newTrans);
+
   addTrasactionForm.reset();
+  await getData();
   updateTransactions(existingTrans);
   loadDetailView();
-
-  await saveToDB(formData); 
 });
-
-addTrasactionForm.addEventListener("submit", addTransaction);
 
 // Load Details Transaction View
 function loadDetailView() {

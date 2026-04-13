@@ -24,3 +24,17 @@ export const addTransaction = async (req, res) => {
         });
     }
 }
+
+export const getTransaction = async (req, res) => {
+    try {
+        const transaction = await Transaction.find({});
+        console.log(transaction);
+
+        res.status(201).json({
+            success: true,
+            data: transaction
+        });
+    } catch(error) {
+            console.error("Error retrieving documents:", error);
+    }
+}

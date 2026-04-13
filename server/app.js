@@ -31,25 +31,6 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/add-transaction", async (req, res) => {
-  try {
-    const transaction = await mongoose.connection
-      .collection("transactions")
-      .insertOne({
-        account: "Axis Bank",
-        amount: -250,
-        category: "Groceries",
-        date: "2000-08-14",
-        description: "Quae odit quia aute ",
-        time: "01:18 PM",
-        createdAt: new Date(),
-      });
-    res.json(transaction);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
