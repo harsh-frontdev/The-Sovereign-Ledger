@@ -1,37 +1,43 @@
-export default function updateTransactions(data) {
+import { getData } from "../data.js";
+
+export default async function updateTransactions() {
+  const noOfTransaction = document.querySelector("#noOfTransaction");
+
+  getData().then((result) => {
+    console.log(result.data);
+    const data = result.data;
+
     // Get Number of Transaction
-    const noOfTransaction = document.querySelector('#noOfTransaction');
     noOfTransaction.textContent = data.length;
-    
+
     // Load Transaction
     const transactionDataEl = document.getElementById("transactionData");
     transactionDataEl.innerHTML = "";
-    if(data.length > 0){
-        data.forEach((element) => {
-            const date = new Date(element.date);
-            const formattedDate = date.toLocaleDateString('en-GB', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric'
-            });
+    if (data.length > 0) {
+      data.forEach((element) => {
+        const date = new Date(element.date);
+        const formattedDate = date.toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        });
 
-            let amountString, colorCode, amount;
-            if(element.amount > 0) {
-                colorCode = 'text-primary';
-                amount = parseFloat(element.amount);
-                amountString = `+ ₹${amount}`;
-            } else{
-                amount = String(element.amount);
-                if (amount.startsWith("-")) {
-                   amount = amount.slice(1);
-                }
-                colorCode = 'text-danger';
-                amountString = `- ₹${amount}`;
-            }
-            // 2B6954
+        let amountString, colorCode, amount;
+        if (element.amount > 0) {
+          colorCode = "text-primary";
+          amount = parseFloat(element.amount);
+          amountString = `+ ₹${amount}`;
+        } else {
+          amount = String(element.amount);
+          if (amount.startsWith("-")) {
+            amount = amount.slice(1);
+          }
+          colorCode = "text-danger";
+          amountString = `- ₹${amount}`;
+        }
 
-            transactionDataEl.innerHTML += `
-                <div class="grid grid-cols-[1.5fr_2fr_1fr_1fr_1fr] gap-4 items-center px-6 py-4 border-b border-border hover:bg-slate-50 transition-colors">
+        transactionDataEl.innerHTML += `
+                <div data-id="${element._id}" class="grid grid-cols-[1.5fr_2fr_1fr_1fr_1fr] gap-4 items-center px-6 py-4 border-b border-border hover:bg-slate-50 transition-colors">
                 <div>
                     <span class="font-medium text-sm text-main block">${formattedDate}</span>
                     <span class="text-xs text-muted mt-1 block">${element.time}</span>
@@ -58,9 +64,9 @@ export default function updateTransactions(data) {
                 </div>
                 </div>
             `;
-        });
+      });
     } else {
-        transactionDataEl.innerHTML += `
+      transactionDataEl.innerHTML += `
             <div class="flex flex-col items-center justify-center p-12 text-center border-t border-border">
                 <span class="material-symbols-rounded text-4xl text-border mb-4">filter_list_off</span>
                 <div class="font-bold text-main mb-2 font-manrope">No results found for current filters</div>
@@ -71,6 +77,31 @@ export default function updateTransactions(data) {
             </div>
         `;
     }
+
+    // Load Details Transaction View
+    const detailDescEl = document.querySelector("#detail-desc");
+    const detailDateEl = document.querySelector("#detail-date");
+    const detailTimeEl = document.querySelector("#detail-time");
+    const detailCategoryEl = document.querySelector("#detail-category");
+    const detailAccountEl = document.querySelector("#detail-account");
+    const detailAmountEl = document.querySelector("#detail-amount");
+
+    (function () {
+      if (data.length > 0) {
+        const date = new Date(data[0].date);
+        const formattedDate = date.toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        });
+
+        detailDescEl.textContent = data[0].description;
+        detailDateEl.textContent = formattedDate;
+        detailTimeEl.textContent = data[0].time;
+        detailCategoryEl.textContent = data[0].category;
+        detailAccountEl.textContent = data[0].account;
+        detailAmountEl.textContent = `₹${data[0].amount}`;
+      }
+    })();
+  });
 }
-
-

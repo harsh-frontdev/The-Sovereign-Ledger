@@ -27,7 +27,7 @@ export const addTransaction = async (req, res) => {
 
 export const getTransaction = async (req, res) => {
     try {
-        const transaction = await Transaction.find({});
+        const transaction = await Transaction.find().sort({ date: -1 });
         console.log(transaction);
 
         res.status(201).json({
