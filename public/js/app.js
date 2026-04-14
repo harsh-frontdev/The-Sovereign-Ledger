@@ -63,7 +63,6 @@ editTransactionBtn.addEventListener("click", (e) => {
 // History Click Event
 const transactionTable = document.querySelector("#transactionTable");
 transactionTable.addEventListener("click", (e) => {
-  console.log('asdasdasd');
   const allTr = document.querySelectorAll("#transactionTable tr");
   allTr.forEach( el => el.classList.remove("bg-slate-50") );
 
