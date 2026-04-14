@@ -16,7 +16,11 @@ async function initApp() {
 }
 
 async function refreshData() {
-  updateTransactions();
+  const result = await getData();
+  if(result && result.success){
+    state.transactions = result.data;
+    updateTransactions(state.transactions);
+  }
 }
 
 // Add Transactions
@@ -61,20 +65,23 @@ handleTransactionClick();
 function handleTransactionClick() {
   const transactionTable = document.querySelector("#transactionTable");
   transactionTable.addEventListener("click", (e) => {
+    
     const allTr = document.querySelectorAll("#transactionTable tr");
-    allTr.forEach((el) => {
-      el.classList.remove("bg-slate-50");
-    });
-    let trEl = e.target.closest("tr");
-    trEl.classList.add("bg-slate-50");
-    if (trEl) {
-      getData().then((result) => {
-        const data = result.data;
-        const filteredData = data.filter((el) => el._id == trEl.dataset.id);
+    allTr.forEach( el => el.classList.remove("bg-slate-50") );
 
-        updateDetailSidebar(filteredData[0]);
-      });
+    let trEl = e.target.closest("tr");
+    if(!trEl) return;
+
+    trEl.classList.add("bg-slate-50");
+    
+    const transactionId = trEl.dataset.id;
+    const selected = state.transactions.find( el => el._id === transactionId);
+    
+    if(selected){
+      state.selectedId = transactionId;
+      updateDetailSidebar(selected);
     }
+    
   });
 }
 
