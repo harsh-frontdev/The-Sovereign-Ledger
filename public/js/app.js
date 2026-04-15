@@ -51,13 +51,6 @@ async function handlePostSubmit() {
   await refreshData();
 }
 
-// Add Transactions
-const addTransactionBtn = document.querySelector("#btnOpenAddTransaction");
-addTransactionBtn.addEventListener("click", (e) => {
-  setModalMode("add");
-  openModalById("addTransactionModal");
-});
-
 // History Click Event
 const transactionTable = document.querySelector("#table-wrapper");
 transactionTable.addEventListener("click", (e) => {
@@ -78,6 +71,13 @@ transactionTable.addEventListener("click", (e) => {
   }
 });
 
+// Add Transactions
+const addTransactionBtn = document.querySelector("#btnOpenAddTransaction");
+addTransactionBtn.addEventListener("click", (e) => {
+  setModalMode("add");
+  openModalById("addTransactionModal");
+});
+
 // Edit Transactions
 const editTransactionBtn = document.querySelector("#btnOpenEditTransaction");
 editTransactionBtn.addEventListener("click", (e) => {
@@ -96,7 +96,7 @@ deleteTransactionBtn.addEventListener("click", async (e) => {
   if (selected) {
     const response = await deleteData(selected._id);
 
-    if (response && response.success) {
+    if (response?.success) {
       showToast("Transaction deleted successfully!", "success");
     } else {
       showToast("Failed to delete transaction.", "error");
