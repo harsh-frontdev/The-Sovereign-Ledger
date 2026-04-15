@@ -72,11 +72,19 @@ transactionTable.addEventListener("click", (e) => {
     state.selectedId = transactionId;
     updateDetailSidebar(selected);
   }
-
 });
 
 // Edit Transactions
 const editTransactionBtn = document.querySelector("#btnOpenEditTransaction");
 editTransactionBtn.addEventListener("click", (e) => {
+  const formData = new FormData(addTrasactionForm);
+  formData.set("desc", 'HEYHEYHEY');
+  
+  const priceEl = document.querySelector('#transaction_price');
+  const dateEl = document.querySelector('#transaction_date');
+  const accountEl = document.querySelector('#transaction_account');
+  
+  document.querySelector('#transaction_desc').value = formData.get("desc");
+
   openModalById("addTransactionModal");
 });

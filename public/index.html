@@ -261,7 +261,7 @@
             <label class="text-[0.65rem] font-bold text-muted uppercase tracking-[0.05em]">AMOUNT</label>
             <div class="flex items-baseline gap-2">
               <span class="text-2xl text-main font-medium">₹</span>
-              <input name="price" type="text" placeholder="0.00"
+              <input id="transaction_price" name="price" type="text" placeholder="0.00"
                 class="border-none text-5xl font-semibold text-main outline-none w-full bg-transparent placeholder-[#e0e7ff]"
                 value="0.00" required>
             </div>
@@ -271,13 +271,13 @@
           <div class="flex gap-6">
             <div class="flex flex-col gap-2 flex-1">
               <label class="text-[0.65rem] font-bold text-muted uppercase tracking-[0.05em]">DATE</label>
-              <input name="date-time" type="date"
+              <input id="transaction_date" name="date-time" type="date"
                 class="bg-slate-50 border border-slate-100 rounded-lg px-4 py-3 text-[0.85rem] text-main outline-none w-full font-medium placeholder-slate-400"
                 placeholder="mm/dd/yyyy, --:-" required>
             </div>
             <div class="flex flex-col gap-2 flex-1">
               <label class="text-[0.65rem] font-bold text-muted uppercase tracking-[0.05em]">ACCOUNT</label>
-              <select name="account"
+              <select id="transaction_account" name="account"
                 class="bg-slate-50 border border-slate-100 rounded-lg px-4 py-3 text-[0.85rem] text-main outline-none w-full font-medium placeholder-slate-400 cursor-pointer"
                 required>
                 <option>SBI Bank</option>
@@ -325,7 +325,7 @@
           <!-- Description -->
           <div class="flex flex-col gap-2">
             <label class="text-[0.65rem] font-bold text-muted uppercase tracking-[0.05em]">DESCRIPTION / NOTES</label>
-            <textarea name="desc"
+            <textarea id="transaction_desc" name="desc"
               class="bg-slate-50 border border-slate-100 rounded-lg px-4 py-3 text-[0.85rem] text-main outline-none w-full font-medium placeholder-slate-400 resize-none h-[60px]"
               placeholder="e.g. Weekly supplies from Artisan Market"></textarea>
           </div>
