@@ -1,10 +1,10 @@
-import { formatCurrency, formatDate } from "./helper.js";
+import { formatCurrency, formatDate } from "../utils/helper.js";
 
 export const updateDetailSidebar = (transaction) => {
-  if(!transaction) return;
+  if (!transaction) return;
 
   // Format Date
-  const formattedDate = formatDate(transaction.date);  
+  const formattedDate = formatDate(transaction.date);
   // Format Amount
   const formattedAmount = formatCurrency(transaction.amount);
   // Set Data in UI

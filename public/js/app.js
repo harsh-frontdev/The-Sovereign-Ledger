@@ -1,8 +1,8 @@
-import updateTransactions from "./utils/transaction.js";
-import { initModal, closeModalById, openModalById } from "./utils/modal.js";
-import { showToast } from "./utils/toast.js";
-import { saveData, getData, deleteData, updateData } from "./data.js";
-import { updateDetailSidebar } from "./utils/detailSidebar.js";
+import updateTransactions from "./components/transactionTable.js";
+import { initModal, closeModalById, openModalById } from "./components/modal.js";
+import { showToast } from "./components/toast.js";
+import { saveData, getData, deleteData, updateData } from "./services/api.js";
+import { updateDetailSidebar } from "./components/detailSidebar.js";
 import { formatDateForInput } from "./utils/helper.js";
 import { getFormData, fillForm } from "./utils/formHandler.js";
 import { setModalMode } from "./utils/uiController.js";

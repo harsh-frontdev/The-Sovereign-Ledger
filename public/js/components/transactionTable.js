@@ -1,8 +1,8 @@
-import { formatDate } from "./helper.js";
-import { updateDetailSidebar } from "./detailSidebar.js";
+import { formatDate } from "../utils/helper.js";
+import { updateDetailSidebar } from "../components/detailSidebar.js";
 
 export default async function updateTransactions(data) {
-  if(!data) return;
+  if (!data) return;
 
   // Destroy instance before mutating the DOM
   if (window.transactionDataTable) {
@@ -18,13 +18,13 @@ export default async function updateTransactions(data) {
     data.forEach((element) => {
 
       const formattedDate = formatDate(element.date);
-      
+
       let amountString, colorCode, amount;
       if (element.amount > 0) {
         colorCode = "text-primary";
         amount = parseFloat(element.amount);
         amountString = `+ ₹${amount}`;
-      } else if(element.amount == 0) {
+      } else if (element.amount == 0) {
         colorCode = "text-primary";
         amountString = `₹${element.amount}`;
       } else {
