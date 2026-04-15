@@ -1,3 +1,4 @@
+import { setTransactions, setSelectedId, getTransactions, getSelectedTransaction } from "./store.js";
 import updateTransactions from "./components/transactionTable.js";
 import { initModal, closeModalById, openModalById } from "./components/modal.js";
 import { showToast } from "./components/toast.js";
@@ -7,10 +8,6 @@ import { formatDateForInput } from "./utils/helper.js";
 import { getFormData, fillForm } from "./utils/formHandler.js";
 import { setModalMode } from "./utils/uiController.js";
 
-let state = {
-  transactions: [],
-  selectedId: null
-};
 initApp();
 async function initApp() {
   initModal("addTransactionModal", "btnOpenAddTransaction", "btnCloseAddTransaction");
@@ -20,8 +17,8 @@ async function initApp() {
 async function refreshData() {
   const result = await getData();
   if (result && result.success) {
-    state.transactions = result.data;
-    updateTransactions(state.transactions);
+    setTransactions(result.data)
+    updateTransactions(getTransactions());
   }
 }
 
@@ -63,10 +60,10 @@ transactionTable.addEventListener("click", (e) => {
   trEl.classList.add("bg-slate-50");
 
   const transactionId = trEl.dataset.id;
-  const selected = state.transactions.find(el => el._id === transactionId);
+  setSelectedId(transactionId);
+  const selected = getSelectedTransaction();
 
   if (selected) {
-    state.selectedId = transactionId;
     updateDetailSidebar(selected);
   }
 });
@@ -74,6 +71,8 @@ transactionTable.addEventListener("click", (e) => {
 // Add Transactions
 const addTransactionBtn = document.querySelector("#btnOpenAddTransaction");
 addTransactionBtn.addEventListener("click", (e) => {
+  mainForm.reset();
+  document.querySelector('#transactionId').value = "";
   setModalMode("add");
   openModalById("addTransactionModal");
 });
@@ -81,9 +80,8 @@ addTransactionBtn.addEventListener("click", (e) => {
 // Edit Transactions
 const editTransactionBtn = document.querySelector("#btnOpenEditTransaction");
 editTransactionBtn.addEventListener("click", (e) => {
-  const selected = state.transactions.find(el => el._id === state.selectedId);
-  if (!selected) return;
-
+  const selected = getSelectedTransaction();
+  if (!selected) return showToast("Please select a transaction first", "info");
   setModalMode("edit");
   fillForm(mainForm, selected, formatDateForInput(selected.date));
   openModalById("addTransactionModal");
@@ -92,16 +90,18 @@ editTransactionBtn.addEventListener("click", (e) => {
 // Delete Transaction
 const deleteTransactionBtn = document.querySelector("#btnDeleteTransaction");
 deleteTransactionBtn.addEventListener("click", async (e) => {
-  const selected = state.transactions.find(el => el._id === state.selectedId);
-  if (selected) {
-    const response = await deleteData(selected._id);
+  const selected = getSelectedTransaction();
+  if (!selected) return showToast("Please select a transaction first", "info");
 
-    if (response?.success) {
-      showToast("Transaction deleted successfully!", "success");
-    } else {
-      showToast("Failed to delete transaction.", "error");
-    }
+  const response = await deleteData(selected._id);
 
-    await refreshData();
+  if (response?.success) {
+    showToast("Transaction deleted successfully!", "success");
+  } else {
+    showToast("Failed to delete transaction.", "error");
   }
+
+  await refreshData();
+  setSelectedId(null);
+  updateDetailSidebar(null);
 });
