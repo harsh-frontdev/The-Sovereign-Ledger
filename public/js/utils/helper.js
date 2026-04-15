@@ -21,3 +21,14 @@ export const formatCurrency = (amount) => {
   }
   return newamount
 };
+
+export const formatDateForInput = (date) => {
+  const datestr = new Date(date);
+  const newDate = datestr.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+  const formattedDate = newDate.split('/').reverse().join('-'); 
+  return formattedDate;
+}
