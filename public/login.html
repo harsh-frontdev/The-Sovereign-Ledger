@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sovereign Ledger - Login</title>
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .marble-bg {
+      background-color: #032b1c;
+      background-image: 
+        radial-gradient(ellipse at center, transparent 0%, rgba(3, 43, 28, 0.8) 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, #06402b 0%, #032b1c 100%);
+    }
+    
+    /* Simulate the marble veins via SVG lines */
+    .marble-veins {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        opacity: 0.15;
+        background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,100 Q150,50 250,200 T500,150' fill='none' stroke='%2334d399' stroke-width='1.5'/%3E%3Cpath d='M100,0 Q250,150 400,100 T600,300' fill='none' stroke='%2334d399' stroke-width='1'/%3E%3Cpath d='M-50,300 Q100,250 200,400 T450,350' fill='none' stroke='%2334d399' stroke-width='2'/%3E%3C/svg%3E");
+        background-size: cover;
+        pointer-events: none;
+    }
+  </style>
+</head>
+
+<body class="font-inter bg-[#fafbfe] text-main leading-relaxed flex min-h-screen overflow-hidden">
+  
+  <!-- Left Side: Informational -->
+  <aside class="relative flex flex-col justify-center w-1/2 p-[4rem_3.5rem] shrink-0 overflow-hidden shadow-[20px_0_40px_rgba(0,0,0,0.1)] z-10 transition-all duration-700 h-full marble-bg">
+    <div class="marble-veins z-0"></div>
+    
+    <!-- Branding -->
+    <div class="z-10 relative mt-[-2rem]">
+      <div class="text-[0.65rem] tracking-[0.2em] font-bold text-[#6a8779] uppercase mb-10">Sovereign Ledger</div>
+      
+      <h2 class="text-[1.5rem] text-white font-bold font-manrope leading-[1.3] mb-6 tracking-tight pr-4">Preserving legacy through digital craftsmanship.</h2>
+      
+      <p class="text-[1rem] text-[#8ba899] leading-[1.7] mb-16 pr-2">
+        The Sovereign Ledger provides an unparalleled environment for asset narrative and private capital orchestration.
+      </p>
+
+      <!-- Stats -->
+      <div class="flex gap-12 mt-auto">
+        <div class="flex flex-col gap-1">
+          <span class="text-[1.75rem] font-bold text-white font-manrope">256-bit</span>
+          <span class="text-[0.65rem] font-bold tracking-[0.15em] text-[#6a8779] uppercase">ENCRYPTION</span>
+        </div>
+        <div class="flex flex-col gap-1">
+          <span class="text-[1.75rem] font-bold text-white font-manrope">Private</span>
+          <span class="text-[0.65rem] font-bold tracking-[0.15em] text-[#6a8779] uppercase">KEY CONTROL</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Right Side: Login Form -->
+  <main class="w-1/2 flex-1 flex flex-col justify-between overflow-y-auto w-full relative">
+    
+    <!-- Center the Form Container -->
+    <div class="flex-1 flex items-center justify-center p-8 w-full">
+      <div class="w-full max-w-[460px] animate-fade-in-up">
+        
+        <!-- Headers -->
+        <div class="flex items-center gap-2 mb-10 text-primary">
+          <div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center">
+            <span class="material-symbols-rounded text-xl icon-filled">account_balance</span>
+          </div>
+          <span class="text-[1.25rem] font-bold font-manrope tracking-tight">Sovereign Ledger</span>
+        </div>
+
+        <h2 class="text-[2.5rem] text-main font-bold font-manrope leading-[1.1] mb-2 tracking-tight">Welcome Back</h2>
+        <p class="text-[1rem] text-muted leading-relaxed font-medium mb-10 w-11/12">Secure access to your private ledger.</p>
+
+        <!-- Form Elements -->
+        <form class="flex flex-col gap-6" action="dashboard.html" method="GET">
+
+          <div class="flex flex-col gap-2 relative group">
+            <label class="text-[0.65rem] font-bold text-muted uppercase tracking-[0.05em] group-focus-within:text-primary transition-colors">EMAIL ADDRESS</label>
+            <input type="email" placeholder="name@institution.com" class="bg-[#eef2fc] border-2 border-transparent rounded-lg px-4 py-3.5 text-[0.9rem] font-medium text-main outline-none w-full placeholder-[#a0aabf] focus:border-primary focus:bg-white transition-all duration-300 hover:bg-[#e6ebf8]" required>
+          </div>
+
+          <div class="flex flex-col gap-2 relative group mt-1">
+            <div class="flex justify-between items-center">
+              <label class="text-[0.65rem] font-bold text-muted uppercase tracking-[0.05em] group-focus-within:text-primary transition-colors">PASSWORD</label>
+              <a href="#" class="text-[0.7rem] font-bold text-main hover:text-primary transition-colors hover:underline">Forgot Password?</a>
+            </div>
+            <div class="relative flex items-center w-full">
+              <input type="password" placeholder="••••••••" class="bg-[#eef2fc] border-2 border-transparent rounded-lg px-4 py-3.5 text-[0.9rem] font-bold tracking-widest text-main outline-none w-full placeholder-[#a0aabf]/70 focus:border-primary focus:bg-white transition-all duration-300 hover:bg-[#e6ebf8]" required>
+              <button type="button" class="absolute right-4 text-muted hover:text-main transition-colors outline-none cursor-pointer flex items-center h-full">
+                <span class="material-symbols-rounded text-lg">visibility</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Checkbox -->
+          <div class="flex items-center gap-3 mt-1 group cursor-pointer w-fit">
+            <div class="relative flex items-center justify-center shrink-0 w-5 h-5">
+              <input type="checkbox" id="remember" class="peer appearance-none w-4 h-4 border-2 border-[#d0d7e6] rounded-[4px] checked:bg-primary checked:border-primary outline-none transition-all cursor-pointer shadow-sm group-hover:border-primary">
+              <div class="absolute pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity">
+                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <label for="remember" class="text-[0.8rem] text-muted leading-none font-medium cursor-pointer select-none group-hover:text-main transition-colors">
+              Remember this device
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="w-full bg-primary text-white mt-4 border-none rounded-lg py-4 text-[0.95rem] font-bold cursor-pointer transition-all duration-300 hover:bg-primary-hover hover:shadow-lg active:scale-[0.98] shadow-md flex items-center justify-center gap-2">
+            Sign In to Ledger
+          </button>
+          
+        </form>
+
+       
+        <div class="mt-8 text-center text-[0.85rem] text-muted font-medium w-full">
+          New to Sovereign? <a href="register.html" class="text-main font-bold hover:text-primary transition-colors hover:underline">Request Access</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right pane Footer -->
+    <footer class="w-full text-center py-6 border-t border-border mt-auto shrink-0 bg-[#fafbfe]/80 backdrop-blur-sm z-10 sticky bottom-0">
+      <div class="flex items-center justify-between px-10 text-[0.7rem] text-light font-medium">
+        <span>&copy; 2024 The Sovereign Ledger. All rights reserved. Member SIPC.</span>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-muted transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-muted transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-muted transition-colors">Security Disclosure</a>
+          <a href="#" class="hover:text-muted transition-colors">Contact Support</a>
+        </div>
+      </div>
+    </footer>
+    
+  </main>
+  
+</body>
+
+</html>
